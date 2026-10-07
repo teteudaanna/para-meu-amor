@@ -4,481 +4,301 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para o Meu Amor ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-color: #0c0509;
-            --card-bg: #150b11;
-            --card-border: rgba(255, 75, 110, 0.2);
-            --pink-accent: #ff4b6e;
-            --pink-hover: #e03e5f;
-            --text-main: #ffffff;
-            --text-sub: #d0b8c4;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Montserrat', sans-serif;
+            background-color: #0d0608;
+            color: #ffffff;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
             position: relative;
             overflow-x: hidden;
-            padding: 40px 20px 80px;
         }
 
-        /* Corações Caindo ao Fundo */
-        .heart-fall {
+        /* Corações Aumentados e Suaves */
+        .heart-bg {
             position: fixed;
-            top: -20px;
-            color: var(--pink-accent);
-            opacity: 0.35;
-            font-size: 16px;
+            top: -10vh;
+            color: rgba(255, 77, 109, 0.35);
+            font-size: 28px;
             user-select: none;
             pointer-events: none;
             animation: fall linear infinite;
             z-index: 0;
+            filter: drop-shadow(0 0 5px rgba(255, 77, 109, 0.4));
         }
 
         @keyframes fall {
-            to {
-                transform: translateY(105vh) rotate(360deg);
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(115vh) rotate(360deg);
+                opacity: 0;
             }
         }
 
-        .main-container {
-            max-width: 760px;
-            margin: 0 auto;
-            position: relative;
+        .container {
+            max-width: 600px;
+            width: 100%;
             z-index: 1;
             display: flex;
             flex-direction: column;
-            gap: 32px;
+            gap: 24px;
+            margin-top: 20px;
+            margin-bottom: 40px;
         }
 
-        /* Cabeçalho Topo */
-        .header-title {
+        header {
             text-align: center;
-            margin-top: 10px;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
 
-        .header-title h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3.5rem;
-            color: var(--pink-accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            text-shadow: 0 0 15px rgba(255, 75, 110, 0.3);
+        h1 {
+            color: #ff4d6d;
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-shadow: 0 0 12px rgba(255, 77, 109, 0.4);
+            font-family: 'Brush Script MT', cursive, sans-serif;
         }
 
-        .header-title span {
-            font-size: 0.85rem;
-            letter-spacing: 4px;
-            color: var(--text-sub);
+        .subtitle {
+            color: #a0a0a0;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            display: block;
-            margin-top: 5px;
-            font-weight: 600;
+            margin-top: 4px;
         }
 
-        /* Card Padronizado */
         .card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 24px;
-            padding: 32px 28px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-            text-align: center;
+            background: rgba(25, 16, 20, 0.75);
+            border: 1px solid rgba(255, 77, 109, 0.2);
+            border-radius: 16px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
 
         .card-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 22px;
+            font-size: 1.1rem;
+            color: #ffffff;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
+            justify-content: space-between;
+            font-weight: 600;
         }
 
         /* Contador */
         .timer-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
+            gap: 10px;
+            text-align: center;
         }
 
-        .time-box {
+        .timer-box {
             background: rgba(0, 0, 0, 0.4);
+            padding: 12px 8px;
+            border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 20px 8px;
         }
 
-        .time-box .number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #fff;
-            display: block;
+        .timer-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff4d6d;
         }
 
-        .time-box .label {
-            font-size: 0.7rem;
-            color: var(--text-sub);
+        .timer-label {
+            font-size: 0.65rem;
+            color: #888;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 6px;
-            display: block;
+            margin-top: 4px;
         }
 
-        /* Spotify Player */
-        .spotify-wrapper {
-            border-radius: 16px;
-            overflow: hidden;
-            background: #000;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        /* Cabeçalho de Seções com Botão */
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 22px;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .section-header-title {
-            text-align: left;
-        }
-
-        .section-header h2 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .section-header p.subtitle {
-            font-size: 0.85rem;
-            color: var(--pink-accent);
-            font-weight: 600;
-            margin-top: 2px;
-        }
-
-        .action-btn {
-            background: var(--pink-accent);
-            color: #fff;
-            padding: 10px 22px;
-            border-radius: 25px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            transition: all 0.2s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 15px rgba(255, 75, 110, 0.3);
-        }
-
-        .action-btn:hover {
-            background: var(--pink-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 75, 110, 0.4);
-        }
-
-        /* Galeria de 4 Fotos Quadradas */
-        .photos-grid {
+        /* Galeria 4 fotos */
+        .gallery-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
+            gap: 10px;
         }
 
-        .photo-slot {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            border-radius: 16px;
-            border: 2px dashed rgba(255, 75, 110, 0.3);
+        .photo-box {
+            aspect-ratio: 1;
+            border-radius: 10px;
             background: rgba(0, 0, 0, 0.3);
+            border: 1px dashed rgba(255, 77, 109, 0.3);
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
             overflow: hidden;
             position: relative;
-            transition: all 0.2s ease;
         }
 
-        .photo-slot:hover {
-            border-color: var(--pink-accent);
-            background: rgba(255, 75, 110, 0.08);
-        }
-
-        .photo-slot img {
+        .photo-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 2;
         }
 
-        .slot-placeholder {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-            color: var(--text-sub);
-            font-size: 0.75rem;
-            z-index: 1;
-        }
-
-        .slot-placeholder span.icon {
-            font-size: 1.5rem;
-            color: var(--pink-accent);
-        }
-
-        /* Player de Vídeo */
-        .video-container {
+        /* Vídeo */
+        .video-box {
             width: 100%;
-            border-radius: 16px;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px dashed rgba(255, 77, 109, 0.3);
             overflow: hidden;
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px dashed rgba(255, 75, 110, 0.3);
-            min-height: 220px;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            position: relative;
+            aspect-ratio: 16 / 9;
         }
 
-        .video-container video {
+        .video-box video {
             width: 100%;
-            max-height: 400px;
-            border-radius: 16px;
-            display: none;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .video-placeholder {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            color: var(--text-sub);
-            padding: 40px 20px;
+        /* Carta de Amor */
+        .letter-content {
+            line-height: 1.6;
+            color: #d1d1d1;
+            font-size: 0.95rem;
         }
 
-        .video-placeholder span.icon {
-            font-size: 2.5rem;
+        .letter-content p {
+            margin-bottom: 12px;
         }
 
-        /* Carta */
-        .letter-card {
-            text-align: left;
-        }
-
-        .letter-card h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
-            color: var(--pink-accent);
+        .signature {
             text-align: center;
-            margin-bottom: 25px;
+            font-family: 'Brush Script MT', cursive, sans-serif;
+            color: #ff4d6d;
+            font-size: 1.8rem;
+            margin-top: 20px;
         }
 
-        .letter-body {
-            font-size: 0.98rem;
-            line-height: 1.9;
-            color: var(--text-main);
-            font-weight: 400;
-        }
-
-        .letter-body p {
-            margin-bottom: 18px;
-        }
-
-        .letter-footer {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.4rem;
-            color: var(--pink-accent);
-            text-align: right;
-            margin-top: 35px;
-            text-shadow: 0 0 10px rgba(255, 75, 110, 0.2);
-        }
-
-        .footer-note {
+        footer {
             text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-sub);
-            margin-top: 10px;
+            color: #666;
+            font-size: 0.8rem;
+            margin-top: 20px;
         }
 
-        @media (max-width: 650px) {
-            .photos-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-            .time-box .number { font-size: 1.5rem; }
-            .header-title h1 { font-size: 2.8rem; }
-            .card { padding: 24px 18px; }
+        .spotify-container {
+            border-radius: 12px;
+            overflow: hidden;
         }
     </style>
 </head>
 <body>
 
-    <div class="main-container">
-
-        <!-- Topo -->
-        <header class="header-title">
+    <div class="container">
+        <header>
             <h1>Mais Especial do Mundo ❤️</h1>
-            <span>MINHA RAZÃO DE VIVER</span>
+            <div class="subtitle">Minha razão de viver</div>
         </header>
 
         <!-- Contador -->
-        <section class="card">
-            <div class="card-title">Juntos Há...</div>
+        <div class="card">
+            <div class="card-title" style="justify-content: center;">Juntos Há...</div>
             <div class="timer-grid">
-                <div class="time-box">
-                    <span class="number" id="days">242</span>
-                    <span class="label">Dias</span>
+                <div class="timer-box">
+                    <div class="timer-value" id="days">0</div>
+                    <div class="timer-label">Dias</div>
                 </div>
-                <div class="time-box">
-                    <span class="number" id="hours">0</span>
-                    <span class="label">Horas</span>
+                <div class="timer-box">
+                    <div class="timer-value" id="hours">0</div>
+                    <div class="timer-label">Horas</div>
                 </div>
-                <div class="time-box">
-                    <span class="number" id="minutes">0</span>
-                    <span class="label">Minutos</span>
+                <div class="timer-box">
+                    <div class="timer-value" id="minutes">0</div>
+                    <div class="timer-label">Minutos</div>
                 </div>
-                <div class="time-box">
-                    <span class="number" id="seconds">0</span>
-                    <span class="label">Segundos</span>
+                <div class="timer-box">
+                    <div class="timer-value" id="seconds">0</div>
+                    <div class="timer-label">Segundos</div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Música Spotify -->
-        <section class="card">
+        <!-- Player Spotify -->
+        <div class="card">
             <div class="card-title">Nossa Música 🎵</div>
-            <div class="spotify-wrapper">
-                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7BqBn9nzAq8spo5e7cZ0dJ?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <div class="spotify-container">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/33yY383ioL599O33A3A932?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
-        </section>
+        </div>
 
-        <!-- Nossos Momentos / Minha Neném (4 Fotos Quadradas) -->
-        <section class="card">
-            <div class="section-header">
-                <div class="section-header-title">
-                    <h2>Nossos Momentos</h2>
-                    <p class="subtitle">Minha neném ❤️</p>
-                </div>
-                <label for="bulkImageInput" class="action-btn">📷 Carregar 4 Fotos</label>
-                <input type="file" id="bulkImageInput" accept="image/*" multiple style="display: none;">
+        <!-- Galeria de Fotos (Busca na raiz ou na pasta amor/) -->
+        <div class="card">
+            <div class="card-title">
+                <span>Nossos Momentos</span>
             </div>
-
-            <div class="photos-grid">
-                <div class="photo-slot" onclick="triggerSingleUpload(0)">
-                    <div class="slot-placeholder" id="placeholder-0">
-                        <span class="icon">+</span>
-                        <span>Foto 1</span>
-                    </div>
-                    <img id="img-slot-0" style="display: none;" alt="Foto 1">
+            <div style="font-size: 0.8rem; color: #ff4d6d; margin-bottom: 12px;">Minha neném ❤️</div>
+            <div class="gallery-grid">
+                <div class="photo-box">
+                    <img src="amor/foto1.jpg" onerror="this.onerror=null; this.src='foto1.jpg';" alt="Foto 1">
                 </div>
-
-                <div class="photo-slot" onclick="triggerSingleUpload(1)">
-                    <div class="slot-placeholder" id="placeholder-1">
-                        <span class="icon">+</span>
-                        <span>Foto 2</span>
-                    </div>
-                    <img id="img-slot-1" style="display: none;" alt="Foto 2">
+                <div class="photo-box">
+                    <img src="amor/foto2.jpg" onerror="this.onerror=null; this.src='foto2.jpg';" alt="Foto 2">
                 </div>
-
-                <div class="photo-slot" onclick="triggerSingleUpload(2)">
-                    <div class="slot-placeholder" id="placeholder-2">
-                        <span class="icon">+</span>
-                        <span>Foto 3</span>
-                    </div>
-                    <img id="img-slot-2" style="display: none;" alt="Foto 3">
+                <div class="photo-box">
+                    <img src="amor/foto3.jpg" onerror="this.onerror=null; this.src='foto3.jpg';" alt="Foto 3">
                 </div>
-
-                <div class="photo-slot" onclick="triggerSingleUpload(3)">
-                    <div class="slot-placeholder" id="placeholder-3">
-                        <span class="icon">+</span>
-                        <span>Foto 4</span>
-                    </div>
-                    <img id="img-slot-3" style="display: none;" alt="Foto 4">
+                <div class="photo-box">
+                    <img src="amor/foto4.jpg" onerror="this.onerror=null; this.src='foto4.jpg';" alt="Foto 4">
                 </div>
             </div>
-            <input type="file" id="singleImageInput" accept="image/*" style="display: none;">
-        </section>
+        </div>
 
-        <!-- Nosso Momento (Vídeo) -->
-        <section class="card">
-            <div class="section-header">
-                <h2>Nosso Momento 🎮</h2>
-                <label for="videoInput" class="action-btn">🎬 Escolher Vídeo</label>
-                <input type="file" id="videoInput" accept="video/*" style="display: none;">
+        <!-- Vídeo -->
+        <div class="card">
+            <div class="card-title">
+                <span>Nosso Momento 🎮</span>
             </div>
-
-            <div class="video-container" id="videoWrapper">
-                <div class="video-placeholder" id="videoPlaceholder">
-                    <span class="icon">🎮</span>
-                    <p style="font-size: 0.9rem; font-weight: 500;">Clique em "Escolher Vídeo" acima para carregar o vídeo de vocês jogando juntos!</p>
-                </div>
-                <video id="gameVideo" controls></video>
+            <div class="video-box">
+                <video controls playsinline>
+                    <source src="amor/video.mov" type="video/mp4">
+                    <source src="amor/video.mov" type="video/quicktime">
+                    <source src="video.mov" type="video/mp4">
+                    Seu navegador não suporta vídeos.
+                </video>
             </div>
-        </section>
+        </div>
 
         <!-- Carta -->
-        <section class="card letter-card">
-            <h2>Carta Para Você</h2>
-            <div class="letter-body">
+        <div class="card">
+            <div class="signature" style="margin-top:0; margin-bottom:15px; font-size:2rem;">Carta Para Você</div>
+            <div class="letter-content">
                 <p><strong>Minha neném,</strong></p>
                 <p>Agradeço por estar comigo nesses 8 meses, por não desistir da gente. Saiba que você mudou a minha vida de uma maneira incrível! Se hoje estou aqui, é por causa de você e por você.</p>
                 <p>Eu te amo muito! Quero viver a minha vida inteira ao seu lado, ter os nossos cabeçudos e que a gente se ame cada vez mais.</p>
                 <p>Você é a minha dengosa, tenho muito orgulho de você meu bem!</p>
             </div>
-            <div class="letter-footer">
-                EU TE AMO MIL MILHÕES ❤️
-            </div>
-        </section>
-
-        <div class="footer-note">
-            Feito com todo o amor do mundo para a pessoa mais especial. ✨
+            <div class="signature">EU TE AMO MIL MILHÕES ❤️</div>
         </div>
 
+        <footer>
+            Feito com todo o amor do mundo para a pessoa mais especial. ✨
+        </footer>
     </div>
 
     <script>
-        // Corações Caindo
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart-fall');
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 3 + 4 + 's';
-            heart.style.fontSize = Math.random() * 12 + 10 + 'px';
-            document.body.appendChild(heart);
-
-            setTimeout(() => { heart.remove(); }, 7000);
-        }
-        setInterval(createHeart, 400);
-
-        // Contador de Dias
-        const startDate = new Date();
-        startDate.setDate(startDate.getDate() - 242);
+        // Data de início do namoro (8 meses atrás)
+        const startDate = new Date('2026-02-07T00:00:00');
 
         function updateTimer() {
             const now = new Date();
@@ -494,56 +314,26 @@
             document.getElementById('minutes').innerText = minutes;
             document.getElementById('seconds').innerText = seconds;
         }
+
         setInterval(updateTimer, 1000);
         updateTimer();
 
-        // Gerenciamento de Fotos
-        let currentTargetSlot = null;
+        // Corações caindo
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-bg');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+            heart.style.fontSize = Math.random() * 15 + 18 + 'px';
+            document.body.appendChild(heart);
 
-        function triggerSingleUpload(slotIndex) {
-            currentTargetSlot = slotIndex;
-            document.getElementById('singleImageInput').click();
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
         }
 
-        function setSlotImage(slotIndex, file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const imgElement = document.getElementById(`img-slot-${slotIndex}`);
-                const placeholder = document.getElementById(`placeholder-${slotIndex}`);
-                imgElement.src = e.target.result;
-                imgElement.style.display = 'block';
-                placeholder.style.display = 'none';
-            };
-            reader.readAsDataURL(file);
-        }
-
-        document.getElementById('singleImageInput').addEventListener('change', function(e) {
-            if (e.target.files.length > 0 && currentTargetSlot !== null) {
-                setSlotImage(currentTargetSlot, e.target.files[0]);
-            }
-        });
-
-        document.getElementById('bulkImageInput').addEventListener('change', function(e) {
-            const files = Array.from(e.target.files).slice(0, 4);
-            files.forEach((file, index) => {
-                setSlotImage(index, file);
-            });
-        });
-
-        // Gerenciamento de Vídeo
-        document.getElementById('videoInput').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const videoElement = document.getElementById('gameVideo');
-                const videoPlaceholder = document.getElementById('videoPlaceholder');
-                const fileURL = URL.createObjectURL(file);
-                
-                videoElement.src = fileURL;
-                videoElement.style.display = 'block';
-                videoPlaceholder.style.display = 'none';
-                videoElement.play();
-            }
-        });
+        setInterval(createHeart, 400);
     </script>
 </body>
 </html>
